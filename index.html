@@ -3,9 +3,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <style>
+     #custom-loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #custom-loading.hidden {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <a-scene mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+
+    <div id="custom-loading" class = "hidden">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Crystal_Clear_app_loading.png/240px-Crystal_Clear_app_loading.png" alt="Ladebild">
+    </div>
+    
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind; uiLoading: #custom-loading;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
         <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
         <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
